@@ -123,12 +123,12 @@ class SchoolManagement(models.Model):
                         "This phone number is already existing, Please correct it or contact admin asap!!!.")
 
     # Group by similar people of same birthdate 
-    @api.depends('dob')
-    def _compute_birth_month(self):
-        for record in self:
-            if record.dob:
-                birth_date = fields.Date.from_string(record.dob)
-                birth_month = birth_date.strftime('%B')
-                record.birth_month = birth_month
-            else:
-                record.birth_month = False
+    # @api.depends('dob')
+    # def _compute_birth_month(self):
+    #     for record in self:
+    #         if record.dob:
+    #             birth_date = fields.Date.from_string(record.dob)
+    #             birth_month = birth_date.strftime('%B')
+    #             record.birth_month = birth_month
+    #         else:
+    #             record.birth_month = False
