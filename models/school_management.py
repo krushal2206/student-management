@@ -132,3 +132,4 @@ class SchoolManagement(models.Model):
                 record.birth_month = birth_month
             else:
                 record.birth_month = False
+                print("Hello World")
