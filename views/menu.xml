@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="school_management_root_menu"
+        name="School Management" />
+
+    <menuitem
+        id="school_management_sub_menu"
+        name="Student Details"
+        action="action_school_management"
+        parent="school_management_root_menu" />
+
+    <menuitem
+        id="teacher_management_sub_menu"
+        name="Teacher Details"
+        action="action_teacher_management"
+        parent="school_management_root_menu" />
+
+    <!-- Menu for Science Students -->
+    <menuitem 
+        id="menu_science_students" 
+        name="Science Students" 
+        parent="school_management_root_menu"
+        action="action_science_students" />
+
+    <!-- Menu for Commerce Students -->
+    <menuitem 
+        id="menu_commerce_students" 
+        name="Commerce Students" 
+        parent="school_management_root_menu"
+        action="action_commerce_students" />
+
+    <!-- Menu for Arts Students -->
+    <menuitem 
+        id="menu_arts_students" 
+        name="Arts Students" 
+        parent="school_management_root_menu"
+        action="action_arts_students" />
+
+
+
+</odoo>

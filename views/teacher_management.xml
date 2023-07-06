@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- tree view  -->
+    <record id="teacher_management_list_view" model="ir.ui.view">
+        <field name="name">teacher.management.list.view</field>
+        <field name="model">teacher.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="teacher_name" />
+                <field name="division" />
+                <field name="standard" />
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="teacher_management_form_view" model="ir.ui.view">
+        <field name="name">teacher.management.form.view</field>
+        <field name="model">teacher.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="teacher_name" />
+                        <field name="division" />
+                        <field name="standard" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_teacher_management" model="ir.actions.act_window">
+        <field name="name">teacher Management</field>
+        <field name="res_model">teacher.management</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

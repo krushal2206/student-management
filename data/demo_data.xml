@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record model='school.management' id='demo_student_1'>
+            <field name="student_name">Vivek Patel</field>
+            <field name="enr_number">1</field>
+            <field name="phone_no">9664965432</field>
+            <field name="dob">2001-06-22</field>
+        </record>
+
+        <record model='school.management' id='demo_student_2'>
+            <field name="student_name">Mahima Joshi</field>
+            <field name="enr_number">2</field>
+            <field name="phone_no">9534235644</field>
+            <field name="dob">2003-09-07</field>
+        </record>
+
+        <record model='school.management' id='demo_student_3'>
+            <field name="student_name">Poonam Raval</field>
+            <field name="enr_number">3</field>
+            <field name="phone_no">8875432123</field>
+            <field name="dob">1998-11-21</field>
+        </record>
+
+
+    </data>
+</odoo>
