@@ -20,32 +20,18 @@
     </record>
 
     <!-- tree view  -->
-    <record
-        id="school_management_list_view" model="ir.ui.view">
+    <record id="school_management_list_view" model="ir.ui.view">
         <field name="name">school.management.list.view</field>
         <field name="model">school.management</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="student_name" />
-                <field name="standard" />
                 <field name="student_division" />
+                <!-- <field name="standard" /> -->
                 <field name="stream" />
                 <field name="class_teacher" />
-                <field name="roll_number" />
                 <field name="enr_number" />
-                <field name="address_line1" />
-                <field name="address_line2" />
-                <field name="city" />
-                <field name="state" />
-                <field name="zip" />
-                <field name="country" />
-                <field name="phone_no" />
-                <field name="dob" />
-                <field name="parent_name" />
-                <field name="relation" />
-                <field name="parent_phone_number" />
-                <field name="parent_email" />
-                <field name="birth_month" invisible="1" />
+                <field name="phone_no"  />
             </tree>
         </field>
     </record>
