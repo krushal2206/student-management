@@ -112,7 +112,26 @@ class SchoolManagement(models.Model):
         # Method logic goes here
         pass
 
+# server action
     def result_passed(self):
         for record in self:
             if not record.result:
                 record.result = "Passed"
+
+# url action
+    def done_button(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'url': 'https://www.odoo.com'
+        }
+
+    def show_rainbow(self):
+        for rec in self:
+            rec.state = 'done'
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'message': 'done',
+                'type': 'rainbow_man',
+            }
+        }
