@@ -14,7 +14,6 @@
                     domain="[('stream', '=', 'Commerce')]" /> -->
                 <!-- <filter string="Arts" name="filter_arts"
                     domain="[('stream', '=', 'Arts')]" /> -->
-
             </search>
         </field>
     </record>
@@ -24,28 +23,52 @@
         <field name="name">school.management.list.view</field>
         <field name="model">school.management</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree
+                decoration-danger="admission_date &lt; current_date"
+                decoration-success="admission_date == current_date"
+                decoration-muted="admission_date &gt; current_date"
+            >
                 <field name="student_name" />
                 <field name="student_division" />
-                <!-- <field name="standard" /> -->
                 <field name="stream" />
+                <field name="result" />
                 <field name="class_teacher" />
                 <field name="enr_number" />
-                <field name="phone_no"  />
+                <field name="phone_no" widget="phone" />
+                <field name="admission_date" />
             </tree>
         </field>
     </record>
 
-    <record
-        id="school_management_form_view" model="ir.ui.view">
+    <record id="school_management_form_view" model="ir.ui.view">
         <field name="name">school.management.form.view</field>
         <field name="model">school.management</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+                        <div>
+                            <field name="student_name" placeholder="Enter Your Name" class="oe_title"
+                                style="font-size: 24px; font-weight: bold;" />
+                        </div>
+                        <div>
+                            <field name="dob" widget="date" style="margin-left: 20px; color: red;" />
+                        </div>
+                        <div>
+                            <field name="phone_no" placeholder="Phone No" style="color: red; margin: 20px;" />
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center; ">
+                        <button name="school_management_heading" string="Save" type="object"
+                            class="oe_highlight"
+                            style="background-color: blue; color: white; font-size: 24px; padding: 20px; text-align: center;" />
+                    </div>
+                </header>
+
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="student_name" placeholder="Enter Your Name " />
+                            <field name="student_name" />
                         </h1>
                     </div>
                     <h2>
@@ -58,16 +81,24 @@
                             <field name="class_teacher" />
                             <field name="stream"
                                 attrs=" {'invisible' : [('standard' , '!=' , 11 ),('standard' , '!=' , 12 )],'required' : ['|' , ('standard' , '=' , 11 ), ('standard' , '=' , 12 )]} " />
+                            <field name="result" readonly="1" />
                             <field name="roll_number" />
-                            <field name="address_line1" />
-                            <field name="address_line2" />
-                            <field name="city" />
-                            <field name="state" />
-                            <field name="zip" />
-                            <field name="country" />
+                            <span class="o_form_label o_td_label" name="address_name">
+                                <b>Address</b>
+                            </span>
+                            <div class="o_address_format">
+                                <field name="address_line1" placeholder="Street1" class="o_address_street" />
+                                <field name="address_line2" placeholder="Street2" class="o_address_street" />
+                                <field name="city" placeholder="City" class="o_address_city" />
+                                <field name="state" class="o_address_state" placeholder="State" />
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                                <div name="partner_address_country" class="d-flex justify-content-between">
+                                    <field name="country" placeholder="Country" class="o_address_country" />
+                                </div>
+                            </div>
                         </group>
                         <group>
-                            <field name="phone_no" />
+                            <field name="phone_no" widget="phone" />
                             <field name="dob" />
                             <field name="age" />
                         </group>
@@ -107,6 +138,18 @@
         </field>
     </record>
 
+    <!-- Server action  -->
+    <record model="ir.actions.server" id="action_result_Passed">
+        <field name="name">Exam Passed</field>
+        <field name="model_id" ref="model_school_management" />
+        <field name="binding_model_id" ref="model_school_management" />
+        <field name="state">code</field>
+        <field name="code"> 
+            for record in records:
+                record.result_passed()
+        </field>
+    </record>
+
     <!-- Action for main Menu -->
     <record id="action_school_management" model="ir.actions.act_window">
         <field name="name">School Management</field>
@@ -116,33 +159,26 @@
     </record>
 
     <!-- Action for Science Students -->
-    <record
-        id="action_science_students" model="ir.actions.act_window">
+    <record id="action_science_students" model="ir.actions.act_window">
         <field name="name">Science Students</field>
         <field name="res_model">school.management</field>
         <field name="view_mode">tree</field>
         <field name="domain">[('stream', '=', 'Science')]</field>
-
     </record>
 
     <!-- Action for Commerce Students -->
-    <record
-        id="action_commerce_students" model="ir.actions.act_window">
+    <record id="action_commerce_students" model="ir.actions.act_window">
         <field name="name">Commerce Students</field>
         <field name="res_model">school.management</field>
         <field name="view_mode">tree</field>
         <field name="domain">[('stream', '=', 'Commerce')]</field>
-
     </record>
 
     <!-- Action for Arts Students -->
-    <record
-        id="action_arts_students" model="ir.actions.act_window">
+    <record id="action_arts_students" model="ir.actions.act_window">
         <field name="name">Arts Students</field>
         <field name="res_model">school.management</field>
         <field name="view_mode">tree</field>
         <field name="domain">[('stream', '=', 'Arts')]</field>
-
     </record>
-
 </odoo>

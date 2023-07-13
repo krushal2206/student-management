@@ -11,7 +11,7 @@
         'views/school_management.xml',
         'views/teacher_management.xml',
         'views/menu.xml',
-        'data/demo_data.xml',
+        'data/demo_data.xml'
     ],
     'application': True,
     'demo': True

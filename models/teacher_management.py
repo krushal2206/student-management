@@ -1,5 +1,6 @@
 from odoo import fields, models
 
+
 class TeacherManagement(models.Model):
     _name = "teacher.management"
     _description = "Teacher Management"

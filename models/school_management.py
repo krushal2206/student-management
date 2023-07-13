@@ -2,7 +2,6 @@ from odoo import fields, models, api
 from odoo.exceptions import UserError
 from datetime import date
 
-
 class SchoolManagement(models.Model):
     _name = "school.management"
     _description = "School Management"
@@ -18,15 +17,14 @@ class SchoolManagement(models.Model):
         ('d', 'D'),
     ], string='Division')
     roll_number = fields.Integer(string="Roll Number")
-    enr_number = fields.Char(string="Enrollment Number",
-                             compute='_compute_enr_number', store=True,)
+    enr_number = fields.Char(string="Enrollment Number", compute='_compute_enr_number', store=True,)
     address_line1 = fields.Char(string="Address Line 1")
     address_line2 = fields.Char(string="Address Line 2")
     city = fields.Char(string="City")
-    state = fields.Char(string="State/Province/Region")
+    state = fields.Many2one('res.country.state', domain="[('country_id', '=', country)]")
     zip = fields.Char(string="Zip/Postal Code")
-    country = fields.Char(string="Country")
-    phone_no = fields.Char(string="Phone Number", tracking=True,required=True)
+    country = fields.Many2one('res.country')
+    phone_no = fields.Char(string="Phone Number", tracking=True, required=True)
     dob = fields.Date(string="Date of Birth", required=True)
     age = fields.Integer(string='Age', compute='_compute_age', store=True)
     parent_name = fields.Char(string="Parent Name")
@@ -45,14 +43,14 @@ class SchoolManagement(models.Model):
     previous_school_enr_no = fields.Char(string="Enrollment Number")
     admission_date = fields.Date(string="Admission Date")
     leaving_date = fields.Date(string="Leaving Date")
-    class_teacher = fields.Many2one(
-        'teacher.management', string="Class Teacher", readonly=True)
+    class_teacher = fields.Many2one('teacher.management', string="Class Teacher", readonly=True)
     stream = fields.Selection([
         ('Science', 'Science'),
         ('Commerce', 'Commerce'),
         ('Arts', 'Arts')
     ], string="Stream")
     birth_month = fields.Char(compute='_compute_birth_month', store=True)
+    result = fields.Char()
 
     # Allocate a class teacher
     @api.onchange('standard', 'student_division')
@@ -62,12 +60,13 @@ class SchoolManagement(models.Model):
                 ('standard', '=', self.standard),
                 ('division', '=', self.student_division)
             ], limit=1)
-            if teacher:
-                self.class_teacher = teacher.id
-            else:
-                self.class_teacher = False
-        else:
-            self.class_teacher = False
+            self.class_teacher = teacher.id if teacher else False
+
+    # enr number auto generate based on phone number
+    @api.depends('phone_no')
+    def _compute_enr_number(self):
+        for record in self:
+            record.enr_number = 'ENR' + record.phone_no if record.phone_no and len(record.phone_no) == 10 else ''
 
     # calculate the age
     @api.depends('dob')
@@ -81,54 +80,39 @@ class SchoolManagement(models.Model):
                     age -= 1
                 record.age = age
                 if age < 4:
-                    raise UserError(
-                        "Kids are not allowed you are only 4 years old!!!.")
+                    raise UserError("Kids under 4 years old are not allowed.")
 
     @api.onchange('dob')
     def _onchange_dob(self):
         if self.dob:
             self._compute_age()
 
-    
-    # enr number auto generate based on phone number
-    # @api.depends('phone_no')
-    # def _compute_enr_number(self):
-    #     for record in self:
-            
-    #         if record.phone_no:
-                
-    #             if (len(record.phone_no) == 10):
-    #                 record.enr_number = 'ENR' + record.phone_no if record.phone_no else ''
-    
-    @api.depends('phone_no')
-    def _compute_enr_number(self):
-        for record in self:
-            if record.phone_no and len(record.phone_no) != 10:
-                record.enr_number = 'ENR' + record.phone_no
-            else:
-                record.enr_number = ''
-
     # Phone number restriction
     @api.constrains('phone_no')
     def _check_phone_number(self):
         for record in self:
-            if record.phone_no and (len(record.phone_no) != 10):
-                raise UserError(
-                    "Check your number it not more than 10 digit!!!")
+            if record.phone_no and len(record.phone_no) != 10:
+                raise UserError("Check your number; it should not exceed 10 digits.")
             if record.phone_no:
-                existing_records = self.search(
-                    [('phone_no', '=', record.phone_no), ('id', '!=', record.id)])
-                if existing_records:
-                    raise UserError(
-                        "This phone number is already existing, Please correct it or contact admin asap!!!.")
+                existing_record = self.search([('phone_no', '=', record.phone_no), ('id', '!=', record.id)], limit=1)
+                if existing_record:
+                    raise UserError("This phone number already exists. Please correct it or contact the admin.")
 
-    # Group by similar people of same birthdate 
+    # Group by similar people of the same birthdate
     @api.depends('dob')
     def _compute_birth_month(self):
         for record in self:
             if record.dob:
                 birth_date = fields.Date.from_string(record.dob)
-                birth_month = birth_date.strftime('%B')
-                record.birth_month = birth_month
+                record.birth_month = birth_date.strftime('%B')
             else:
                 record.birth_month = False
+
+    def school_management_heading(self):
+        # Method logic goes here
+        pass
+
+    def result_passed(self):
+        for record in self:
+            if not record.result:
+                record.result = "Passed"
