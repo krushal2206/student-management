@@ -3,7 +3,7 @@
     <data noupdate="1">
         <record id="demo_student1" model="school.management">
             <field name="student_name">Vivek Patel</field>
-            <field name="enr_number">ENR9664965432</field>
+            <field name="enr_number">ENR00001</field>
             <field name="phone_no">9664965432</field>
             <field name="dob">2001-06-02</field>
             <field name="age">23</field>
@@ -11,7 +11,7 @@
 
         <record id="demo_student2" model="school.management">
             <field name="student_name">Mahima Joshi</field>
-            <field name="enr_number">ENR9534235644</field>
+            <field name="enr_number">ENR00002</field>
             <field name="phone_no">9534235643</field>  <!-- Updated phone number -->
             <field name="dob">2001-06-02</field>
             <field name="age">23</field>
@@ -19,7 +19,7 @@
 
         <record id="demo_student3" model="school.management">
             <field name="student_name">Poonam Raval</field>
-            <field name="enr_number">ENR8875432123</field>
+            <field name="enr_number">ENR00003</field>
             <field name="phone_no">8875432124</field>  <!-- Updated phone number -->
             <field name="dob">2001-06-02</field>
             <field name="age">23</field>
