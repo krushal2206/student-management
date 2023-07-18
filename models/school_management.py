@@ -21,7 +21,7 @@ class SchoolManagement(models.Model):
 
     # ENR Number Generate
     enr_number = fields.Char(string="Enrollment Number", copy=False, readonly=True,
-                             index=True, default=lambda self: _('New'))
+                             index=True, default=lambda self: _(''))
 
     @api.model
     def create(self, vals):
@@ -44,7 +44,6 @@ class SchoolManagement(models.Model):
     # age
     age = fields.Integer(string='Age', compute='_compute_age', store=True)
     # calculate the age
-
     @api.depends('dob')
     def _compute_age(self):
         today = fields.Date.today()
