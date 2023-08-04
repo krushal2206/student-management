@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="school_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div>
+                            <h1>Confirmation Mail of the Student</h1>
+                            <h1> Student Name:- <span t-field="o.student_name" />
+                            </h1>
+                            <h3> Standard:- <span t-field="o.standard" />
+                            </h3>
+                            <h3> Student Division:- <span t-field="o.student_division" />
+                            </h3>
+                            <p> Roll Number:- <span t-field="o.roll_number" />
+                            </p>
+                            <p> Enrollment Number:- <span t-field="o.enr_number" />
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="school_report_temp" model="ir.actions.report">
+        <field name="name">Student Report Template</field>
+        <field name="model">school.management</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">school_management.school_report_template</field>
+        <field name="report_file">school_management.school_report_template</field>
+        <field name="print_report_name">'Student-Data'</field>
+        <field name="binding_model_id" ref="school_management.model_school_management" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo> 

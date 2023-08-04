@@ -8,4 +8,4 @@ class TeacherManagement(models.Model):
 
     teacher_name = fields.Char(string="Teacher Name")
     division = fields.Char(string='Division')
-    standard = fields.Char(string="Standard")
+    standard = fields.Integer(string="Standard")

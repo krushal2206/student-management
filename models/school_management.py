@@ -7,8 +7,9 @@ class SchoolManagement(models.Model):
     _name = "school.management"
     _description = "School Management"
     _rec_name = "student_name"
-    _inherit = 'mail.thread'
+    _inherit = ['mail.thread']
 
+    global_field = fields.Char(string="Global Field")
     student_name = fields.Char(string="Name", required=True)
     standard = fields.Integer(string="Standard")
     student_division = fields.Selection([
@@ -17,17 +18,20 @@ class SchoolManagement(models.Model):
         ('c', 'C'),
         ('d', 'D'),
     ], string='Division')
-    roll_number = fields.Integer(string="Roll Number")
+    roll_number = fields.Char(string="Roll Number")
 
     # ENR Number Generate
     enr_number = fields.Char(string="Enrollment Number", copy=False, readonly=True,
                              index=True, default=lambda self: _(''))
+    image = fields.Image(string="Image")
 
     @api.model
     def create(self, vals):
         record = super(SchoolManagement, self).create(vals)
         record.enr_number = "ENR" + str(record.id).zfill(3)
+        print(type(record), "It's Return a Object")
         return record
+        
 
     # Address field
     address_line1 = fields.Char(string="Address Line 1")
@@ -44,6 +48,7 @@ class SchoolManagement(models.Model):
     # age
     age = fields.Integer(string='Age', compute='_compute_age', store=True)
     # calculate the age
+
     @api.depends('dob')
     def _compute_age(self):
         today = fields.Date.today()
@@ -79,7 +84,8 @@ class SchoolManagement(models.Model):
     admission_date = fields.Date(string="Admission Date")
     leaving_date = fields.Date(string="Leaving Date")
     class_teacher = fields.Many2one(
-        'teacher.management', string="Class Teacher", readonly=True)
+        'teacher.management', string="Class Teacher")
+
     stream = fields.Selection([
         ('Science', 'Science'),
         ('Commerce', 'Commerce'),
@@ -88,16 +94,34 @@ class SchoolManagement(models.Model):
     birth_month = fields.Char(compute='_compute_birth_month', store=True)
     result = fields.Char()
     family_history = fields.Char(readonly='1')
+    student_email=fields.Char(string="Student Email")
+    
+
+    # Behaviour of Compute field with store true and false, and with depends and without depends.
+    fees = fields.Float(string='Fees', digits=(10, 2))
+    discount = fields.Float(string='Discount (%)', digits=(5, 2))
+    discounted_fees = fields.Float(string='Discounted Price', digits=(
+        10, 2), compute='_compute_discounted_fees', store=False)
+
+    @api.depends('fees', 'discount')
+    def _compute_discounted_fees(self):
+        for product in self:
+            product.discounted_fees = product.fees * \
+                (1 - (product.discount / 100))
 
     # Allocate a class teacher
     @api.onchange('standard', 'student_division')
     def _onchange_standard_student_division(self):
+        print("Onchange triggered!")
         if self.standard and self.student_division:
+            print(f"Standard: {self.standard}, Division: {self.student_division}")
             teacher = self.env['teacher.management'].search([
                 ('standard', '=', self.standard),
                 ('division', '=', self.student_division)
             ], limit=1)
-            self.class_teacher = teacher.id if teacher else False
+            print(f"Found Teacher: {teacher.teacher_name if teacher else None}")
+            self.class_teacher = teacher or False
+
 
     # Phone number restriction
 
@@ -117,6 +141,7 @@ class SchoolManagement(models.Model):
     # Group by similar people of the same birthdate
     @api.depends('dob')
     def _compute_birth_month(self):
+        
         for record in self:
             if record.dob:
                 birth_date = fields.Date.from_string(record.dob)
@@ -140,3 +165,20 @@ class SchoolManagement(models.Model):
             'type': 'ir.actions.act_url',
             'url': 'https://www.odoo.com'
         }
+# Email template 
+    def email_temp(self):
+        mail_template = self.env.ref('school_management.school_email_template')
+        mail_template.send_mail(self.id, force_send=True)
+
+    @api.model
+    def send_confirmation_email(self):
+        print("HHHHHHHHHHHHHHH")
+        confirmed_students = self.search([('admission_date', '!=', False), ('leaving_date', '!=', False)])
+        print(confirmed_students)
+
+        for student in confirmed_students:
+            student.email_temp()
+
+    @api.model
+    def send_confirmation_email_cron(self):
+        self.send_confirmation_email()

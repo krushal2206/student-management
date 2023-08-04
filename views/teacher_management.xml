@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- tree view  -->
     <record id="teacher_management_list_view" model="ir.ui.view">
@@ -10,7 +10,6 @@
                 <field name="division" />
                 <field name="standard" />
             </tree>
-
         </field>
     </record>
 
@@ -30,11 +29,9 @@
         </field>
     </record>
 
-
     <record id="action_teacher_management" model="ir.actions.act_window">
-        <field name="name">teacher Management</field>
+        <field name="name">Teacher Management</field>
         <field name="res_model">teacher.management</field>
         <field name="view_mode">tree,form</field>
     </record>
-
 </odoo>
