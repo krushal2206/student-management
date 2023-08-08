@@ -182,3 +182,14 @@ class SchoolManagement(models.Model):
     @api.model
     def send_confirmation_email_cron(self):
         self.send_confirmation_email()
+
+# PSQL Queries along with Table JOINS 
+    def action_psql_queries(self):
+        # query = """SELECT student_name, standard FROM school_management"""
+        # query = """SELECT student_name, standard FROM school_management WHERE standard = '11'"""
+        # query = """SELECT student_name, standard FROM school_management WHERE standard = '11'"""
+        query = """UPDATE school_management SET student_name='Kevin' WHERE id=1"""
+        
+        self.env.cr.execute(query)
+        # res = self.env.cr.fetchall()
+        # print(res)

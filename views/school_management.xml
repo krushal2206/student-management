@@ -45,6 +45,8 @@
                     <button name="email_temp" string="Send Email" type="object"
                         class="oe_highlight mr4"
                     />
+                    <button name="action_psql_queries" string="Get the Value" type="object"
+                    class="oe_highlight" />
                 </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar" />

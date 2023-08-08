@@ -24,29 +24,35 @@
     <menuitem
         id="stream_management_root_menu"
         name="Stream"
-        parent="school_management_root_menu"/>
+        parent="school_management_root_menu" />
 
     <!-- Menu for Science Students -->
-    <menuitem 
-        id="menu_science_students" 
-        name="Science Students" 
+    <menuitem
+        id="menu_science_students"
+        name="Science Students"
         parent="stream_management_root_menu"
         action="action_science_students" />
 
     <!-- Menu for Commerce Students -->
-    <menuitem 
-        id="menu_commerce_students" 
-        name="Commerce Students" 
+    <menuitem
+        id="menu_commerce_students"
+        name="Commerce Students"
         parent="stream_management_root_menu"
         action="action_commerce_students" />
 
     <!-- Menu for Arts Students -->
-    <menuitem 
-        id="menu_arts_students" 
-        name="Arts Students" 
+    <menuitem
+        id="menu_arts_students"
+        name="Arts Students"
         parent="stream_management_root_menu"
         action="action_arts_students" />
 
+    <menuitem id="school_config_settings_menu"
+        name="Config Settings"
+        action="school_config_settings_action"
+        parent="school_management_root_menu"
+        sequence="50"
+        groups="base.group_system" />
 
 
 </odoo>
