@@ -31,6 +31,8 @@ class SchoolManagement(models.Model):
         record.enr_number = "ENR" + str(record.id).zfill(3)
         print(type(record), "It's Return a Object")
         return record
+
+# this is for updated li 
         
 
     # Address field
