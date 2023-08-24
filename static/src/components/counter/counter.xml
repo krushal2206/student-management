@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+<t t-name="school_management.clientactioncounter" owl="1">
+  <div t-on-click="onClick"> 
+    <t t-esc="num.counter"/>
+      <!-- <h1>Hello</h1> -->
+  </div>
+</t>
+
+</templates>

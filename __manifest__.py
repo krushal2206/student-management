@@ -9,6 +9,11 @@
     Student managemnet module which help to maintain the student data.
     """,
     'summary': 'This module help to Manage student data.',
+     'assets': {
+        'web.assets_backend': [
+            'school_management/static/src/components/**/*',
+        ]
+    },
     'data': [
         'security/ir.model.access.csv',
         'views/school_management.xml',
@@ -18,8 +23,7 @@
         'views/sales_res_config_setting.xml',
         'report/student_report_template.xml',
         'report/student_email_template.xml',
-        'data/cron_job.xml',
-        'views/owl_template.xml',
+        'data/cron_job.xml'
 
 
     ],
@@ -27,11 +31,7 @@
     'demo': [
         'demo/demo_data.xml'
     ],
-    'assets': {
-        'web.assets_backend': [
-            'school_management/static/src/**/*',
-        ]
-    },
+   
     'license': "LGPL-3",
     'category': "Student Management",
     'application': True,

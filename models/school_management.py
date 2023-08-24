@@ -196,9 +196,23 @@ class SchoolManagement(models.Model):
         self.env.cr.execute(query)
         # res = self.env.cr.fetchall()
         # print(res)
+###########################################################
 
     def click_here(self):
         return {
-            "tag": "school_management.dashboard",
+            "tag": "school_management.dashboard2",  # change the model name
+            "type": "ir.actions.client"
+        }
+###########################################################
+
+    def counter(self):
+        return {
+            "tag": "school.counter",  # change the model name
+            "type": "ir.actions.client"
+        }
+
+    def todoist(self):
+        return {
+            "tag": "school_management.todo",
             "type": "ir.actions.client"
         }

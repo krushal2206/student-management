@@ -47,7 +47,13 @@
                     />
                     <button name="action_psql_queries" string="Get the Value" type="object"
                         class="oe_highlight" />
-                    <button name="click_here" string="Click Here" type="object"
+                    <button name="click_here" string="Dashboard 2" type="object"
+                        class="oe_highlight mr4"
+                    />
+                    <button name="counter" string="Counter App" type="object"
+                        class="oe_highlight mr4"
+                    />
+                    <button name="todoist" string="Todoist" type="object"
                         class="oe_highlight mr4"
                     />
                 </header>

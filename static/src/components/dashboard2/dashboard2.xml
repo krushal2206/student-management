@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve" owl="1">
+
+    <t t-name="school_management.clientaction3" owl="1">
+        <h1>This is Dashboard 2!</h1>
+        <button t-on-mouseup="increment" t-on-mousedown="decrement" t-ref="btn">INCREMENT</button>
+        <h3 t-out="count.value"></h3>
+        <h3 t-out="down.value"></h3>
+    </t>
+    
+</templates>
