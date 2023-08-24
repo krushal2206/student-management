@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <template id="owl_webpage" name="OWL Webpage">
+    <t t-call="web.html_container">
+      <div class="oe_structure" />
+    </t>
+  </template>
+
+  <record id="action_owl_page" model="ir.actions.act_url">
+    <field name="name">OWL Webpage</field>
+    <field name="url">/owl_page</field>
+    <field name="target">self</field>
+  </record>
+
+  <menuitem id="menu_owl_page" name="OWL Webpage" parent="school_management_root_menu"
+    action="action_owl_page" />
+</odoo>

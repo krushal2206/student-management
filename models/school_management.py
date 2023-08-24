@@ -32,8 +32,7 @@ class SchoolManagement(models.Model):
         print(type(record), "It's Return a Object")
         return record
 
-# this is for updated li 
-        
+# this is for updated li
 
     # Address field
     address_line1 = fields.Char(string="Address Line 1")
@@ -96,8 +95,7 @@ class SchoolManagement(models.Model):
     birth_month = fields.Char(compute='_compute_birth_month', store=True)
     result = fields.Char()
     family_history = fields.Char(readonly='1')
-    student_email=fields.Char(string="Student Email")
-    
+    student_email = fields.Char(string="Student Email")
 
     # Behaviour of Compute field with store true and false, and with depends and without depends.
     fees = fields.Float(string='Fees', digits=(10, 2))
@@ -116,14 +114,15 @@ class SchoolManagement(models.Model):
     def _onchange_standard_student_division(self):
         print("Onchange triggered!")
         if self.standard and self.student_division:
-            print(f"Standard: {self.standard}, Division: {self.student_division}")
+            print(
+                f"Standard: {self.standard}, Division: {self.student_division}")
             teacher = self.env['teacher.management'].search([
                 ('standard', '=', self.standard),
                 ('division', '=', self.student_division)
             ], limit=1)
-            print(f"Found Teacher: {teacher.teacher_name if teacher else None}")
+            print(
+                f"Found Teacher: {teacher.teacher_name if teacher else None}")
             self.class_teacher = teacher or False
-
 
     # Phone number restriction
 
@@ -143,7 +142,7 @@ class SchoolManagement(models.Model):
     # Group by similar people of the same birthdate
     @api.depends('dob')
     def _compute_birth_month(self):
-        
+
         for record in self:
             if record.dob:
                 birth_date = fields.Date.from_string(record.dob)
@@ -167,7 +166,8 @@ class SchoolManagement(models.Model):
             'type': 'ir.actions.act_url',
             'url': 'https://www.odoo.com'
         }
-# Email template 
+# Email template
+
     def email_temp(self):
         mail_template = self.env.ref('school_management.school_email_template')
         mail_template.send_mail(self.id, force_send=True)
@@ -175,7 +175,8 @@ class SchoolManagement(models.Model):
     @api.model
     def send_confirmation_email(self):
         print("HHHHHHHHHHHHHHH")
-        confirmed_students = self.search([('admission_date', '!=', False), ('leaving_date', '!=', False)])
+        confirmed_students = self.search(
+            [('admission_date', '!=', False), ('leaving_date', '!=', False)])
         print(confirmed_students)
 
         for student in confirmed_students:
@@ -185,13 +186,19 @@ class SchoolManagement(models.Model):
     def send_confirmation_email_cron(self):
         self.send_confirmation_email()
 
-# PSQL Queries along with Table JOINS 
+# PSQL Queries along with Table JOINS
     def action_psql_queries(self):
         # query = """SELECT student_name, standard FROM school_management"""
         # query = """SELECT student_name, standard FROM school_management WHERE standard = '11'"""
         # query = """SELECT student_name, standard FROM school_management WHERE standard = '11'"""
         query = """UPDATE school_management SET student_name='Kevin' WHERE id=1"""
-        
+
         self.env.cr.execute(query)
         # res = self.env.cr.fetchall()
         # print(res)
+
+    def click_here(self):
+        return {
+            "tag": "school_management.dashboard",
+            "type": "ir.actions.client"
+        }

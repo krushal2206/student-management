@@ -47,12 +47,4 @@
         parent="stream_management_root_menu"
         action="action_arts_students" />
 
-    <menuitem id="school_config_settings_menu"
-        name="Config Settings"
-        action="school_config_settings_action"
-        parent="school_management_root_menu"
-        sequence="50"
-        groups="base.group_system" />
-
-
 </odoo>

@@ -19,11 +19,19 @@
         'report/student_report_template.xml',
         'report/student_email_template.xml',
         'data/cron_job.xml',
+        'views/owl_template.xml',
+
+
     ],
 
     'demo': [
         'demo/demo_data.xml'
     ],
+    'assets': {
+        'web.assets_backend': [
+            'school_management/static/src/**/*',
+        ]
+    },
     'license': "LGPL-3",
     'category': "Student Management",
     'application': True,

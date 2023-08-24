@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve" owl="1">
+
+    <t t-name="school_management.clientaction" owl="1">
+        <h1>WELCOME</h1>
+        <p>HELLOOOO</p>
+        <!-- <div t-name="school_management.clientaction1" >
+            <button  t-on-click="increment" >Increment</button>
+            <h1 t-out="num.value"></h1>
+            </div> -->
+    </t>
+   
+    
+  
+
+</templates>

@@ -34,7 +34,7 @@
             <field name="target">inline</field>
             <field name="context">{'module': 'school_management', 'bin_size': False}</field>
         </record>
-        
+
 
     </data>
 </odoo>

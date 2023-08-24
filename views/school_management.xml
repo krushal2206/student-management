@@ -28,7 +28,7 @@
                 <field name="stream" />
                 <field name="result" />
                 <field name="class_teacher" />
-                <field name="enr_number" widget="badge"/>
+                <field name="enr_number" widget="badge" />
                 <field name="phone_no" widget="phone" />
                 <field name="admission_date" />
             </tree>
@@ -46,7 +46,10 @@
                         class="oe_highlight mr4"
                     />
                     <button name="action_psql_queries" string="Get the Value" type="object"
-                    class="oe_highlight" />
+                        class="oe_highlight" />
+                    <button name="click_here" string="Click Here" type="object"
+                        class="oe_highlight mr4"
+                    />
                 </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar" />
