@@ -1,6 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
     <t t-name="school_management.todolist" owl="1">
-        <h1>ToDo List App</h1>
+        <div class="todolist-container"> <!-- Apply a CSS class to the entire container -->
+            <p class="divider">###############################################################################</p>
+            <h1 class="heading">Todoist Makes You Productive!</h1>
+            <p class="divider">###############################################################################</p>
+
+            <h2>Working Hard for Your Future!</h2>
+
+            <input type="text" t-model="state.newTask" placeholder="Add Task..." class="input-field"/> <!--
+            Apply a CSS class to the input field -->
+            <p class="spacer">.......................</p>
+            <button class="btn-success" t-on-click="addTask">Add Task</button>
+
+            <ul class="task-list"> <!--
+                Apply a CSS class to the task list -->
+                <li t-foreach="state.tasks" t-as="task" t-key="task" class="task-item">
+                    
+                    <span t-esc="task"/>
+                    
+                    <button class="btn-success" t-on-click="() => deleteTask(state.tasks.indexOf(task))">Delete</button>
+                   
+                </li>
+                
+            </ul>
+        </div>
+        <style>
+            /* CSS for styling the todo list container */
+            .heading{
+                text-align: center;
+            }
+
+.todolist-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+/* CSS for styling the dividing lines */
+.divider {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    margin: 10px 0;
+}
+
+/* CSS for styling the input field */
+.input-field {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* CSS for styling the spacer */
+.spacer {
+    margin: 5px 0;
+    color: #999;
+}
+
+/* CSS for styling the task list */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* CSS for styling task items */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+/* CSS for styling delete buttons */
+.btn-success {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+
+}
+.btn-done {
+    background-color: #4CAF20;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+        </style>
+
+        
     </t>
 </templates>
