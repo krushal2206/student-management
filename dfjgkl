@@ -1,0 +1,134 @@
+[33mcommit 68ef7527c6d55b90dc5862337af5884851707fb9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Krushal Kalkani <krushal.kalkani78@gmial.com>
+Date:   Fri Sep 15 11:18:18 2023 +0530
+
+    Web-Site Created
+
+[33mcommit d998a8e77270f5b764cf2c94f3a5696f6d9eeeea[m
+Author: Krushal Kalkani <krushal.kalkani78@gmial.com>
+Date:   Sat Aug 26 15:35:45 2023 +0530
+
+    Create JS and xml file
+
+[33mcommit 313765badc62e32ef103144db06f3d1a4a27d9e8[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Aug 24 14:47:29 2023 +0530
+
+    VS Code Ignore
+
+[33mcommit 72c1c39d56f3026478ddc6542f07f6b5dbb63010[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Aug 24 10:45:40 2023 +0530
+
+    Updated Gitignore
+
+[33mcommit 8257d798b30980b2a8903ef19120b0b7f26edf8e[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Aug 24 10:08:14 2023 +0530
+
+    Delete Unwanted File
+
+[33mcommit 00f1f80f5bf52e3eb35a93ae053e9059efe13197[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Aug 24 09:55:35 2023 +0530
+
+    .gitignore file added
+
+[33mcommit 9db0fae9653e456232c7dd4e9677347c2cafcd09[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Aug 24 09:30:46 2023 +0530
+
+    JS File added
+
+[33mcommit 56cddf5472f1bc7a1a325885a723b601a382f4a3[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Fri Aug 11 15:25:06 2023 +0530
+
+    Module Updated
+
+[33mcommit bd0e248d8a8d6d9a4911e262e03fe177988dd2bc[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Tue Aug 8 18:26:08 2023 +0530
+
+    Updated School Management Module
+
+[33mcommit a32c5b37fcd4a6132ad6e1779895c2e9d2365006[m
+Author: Krushal Kalkani <138698135+krushal2206@users.noreply.github.com>
+Date:   Fri Aug 4 17:55:40 2023 +0530
+
+    Create API
+
+[33mcommit 14cd51e13b05e09b3ff6985420b21e1ee529c63f[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Fri Aug 4 15:07:22 2023 +0530
+
+    Module updated with new task
+
+[33mcommit 8bbed428293594d134589ecbe9c7af0fc92c5f12[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Tue Jul 18 21:12:01 2023 +0530
+
+    Deleted Pycache
+
+[33mcommit 8ff854b82b407bf092ccb96e16a4c11220df658f[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Mon Jul 17 17:04:53 2023 +0530
+
+    Updated ENR Sequence
+
+[33mcommit f6ee88a6477f973a36ba3d6eafd7f2d36529fa23[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 13 17:18:18 2023 +0530
+
+    updated Module with url method
+
+[33mcommit 7eef305af3c7d99da2c83bffaed948b4872516a9[m
+Author: krushal2206 <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 13 15:43:30 2023 +0530
+
+    Updated view.xml and main.py
+
+[33mcommit 6f9afc87d471d27e91dc555e30f9a0a097fc0903[m
+Author: Krushal Kalkani <krushal.kalkani@brainvire.com>
+Date:   Mon Jul 10 15:37:50 2023 +0530
+
+    Updated menu
+
+[33mcommit 8dd6638326d587714aba44a4abeabfe9023e864e[m
+Merge: f6e46d1 42af4d5
+Author: Krushal Kalkani <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 6 18:44:02 2023 +0530
+
+    Updated GitIgnore
+
+[33mcommit f6e46d10bce1c442861a7a6a7230e854d00aee13[m
+Author: Krushal Kalkani <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 6 18:39:31 2023 +0530
+
+    Created Changes
+
+[33mcommit 42af4d508752b11a992cf0f2d3dd46dd8e827a97[m
+Author: Krushal Kalkani <138698135+krushal2206@users.noreply.github.com>
+Date:   Thu Jul 6 18:38:10 2023 +0530
+
+    Update .gitignore
+    
+    Commit by sakshi
+
+[33mcommit 2422761f00f69a1f9c1deb6a4138d9c5fc563f22[m
+Author: Krushal Kalkani <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 6 18:32:50 2023 +0530
+
+    Updated .gitignore
+
+[33mcommit bd1a08a4e01f59641bef22921c27d13c0b96a4e4[m
+Author: Krushal Kalkani <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 6 18:15:53 2023 +0530
+
+    Created Git Ignore File
+
+[33mcommit 8b66ad0004a3c2b9d73752a2dbafb72f62ded058[m
+Author: Krushal Kalkani <krushal.kalkani@brainvire.com>
+Date:   Thu Jul 6 17:21:44 2023 +0530
+
+    Created School Management Module

@@ -16,7 +16,6 @@
         'web.assets_frontend': [
             'school_management/static/src/scss/styles.scss',
             'school_management/static/src/js/info-school.js',
-            'school_management/static/src/js/explore-school.js',
         ],
     },
     'data': [
@@ -29,6 +28,7 @@
         'views/sales_res_config_setting.xml',
         'views/snippets/info_school.xml',
         'views/snippets/info_snippet1.xml',
+        'views/snippets/static_info.xml',
         'report/student_report_template.xml',
         'report/student_email_template.xml',
         'data/cron_job.xml'

@@ -23,7 +23,7 @@ class SchoolManagement(models.Model):
 
     # ENR Number Generate
     enr_number = fields.Char(string="Enrollment Number", copy=False, readonly=True,
-                             index=True, default=lambda self: _(''))
+                             index=True)
     image = fields.Image(string="Image")
 
     @api.model
@@ -99,7 +99,6 @@ class SchoolManagement(models.Model):
     family_history = fields.Char(readonly='1')
     student_email = fields.Char(string="Student Email")
 
-    # Behaviour of Compute field with store true and false, and with depends and without depends.
     fees = fields.Float(string='Fees', digits=(10, 2))
     discount = fields.Float(string='Discount (%)', digits=(5, 2))
     discounted_fees = fields.Float(string='Discounted Price', digits=(
@@ -112,19 +111,19 @@ class SchoolManagement(models.Model):
                 (1 - (product.discount / 100))
 
     # Allocate a class teacher
-    @api.onchange('standard', 'student_division')
-    def _onchange_standard_student_division(self):
-        print("Onchange triggered!")
-        if self.standard and self.student_division:
-            print(
-                f"Standard: {self.standard}, Division: {self.student_division}")
-            teacher = self.env['teacher.management'].search([
-                ('standard', '=', self.standard),
-                ('division', '=', self.student_division)
-            ], limit=1)
-            print(
-                f"Found Teacher: {teacher.teacher_name if teacher else None}")
-            self.class_teacher = teacher or False
+    # @api.onchange('standard', 'student_division')
+    # def _onchange_standard_student_division(self):
+    #     print("Onchange triggered!")
+    #     if self.standard and self.student_division:
+    #         print(
+    #             f"Standard: {self.standard}, Division: {self.student_division}")
+    #         teacher = self.env['teacher.management'].search([
+    #             ('standard', '=', self.standard),
+    #             ('division', '=', self.student_division)
+    #         ], limit=1)
+    #         print(
+    #             f"Found Teacher: {teacher.teacher_name if teacher else None}")
+    #         self.class_teacher = teacher or False
 
     # Phone number restriction
 

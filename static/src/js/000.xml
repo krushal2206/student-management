@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+ <t t-name="school_management.school_qweb">
+    <t t-foreach="school" t-as="school_info">
+        
+   
+    <div class="col-lg-3 mb-5">
+        <div class="text-center">
+            <div class="img-container mb-2">
+                <img class="country-image rounded" src="data:image/png;base64,${
+                  school.image
+                }" style="max-width: 120px; height: auto; box-shadow: 0px 0px 10px rgba(0,0,0,0.3);"/>
+            </div>
+            <div>
+                <h5 class="mb-1" style="font-size: 18px;">
+
+                    <t t-out="school_info.school_name"></t>
+                </h5>
+                <div><t t-out="school_info.state_id[1]"></t></div>
+                <div><t t-out="school_info.country_id[1]"></t></div>
+            </div>
+        </div>
+    </div>
+    </t>
+</t>
+
+
+</templates>
