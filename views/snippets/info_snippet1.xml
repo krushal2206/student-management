@@ -9,6 +9,10 @@
                         t-thumbnail="/school_management/static/src/img/snippets/explore-school.svg">
                         <keywords>explore, school</keywords>
                     </t>
+                    <t t-snippet="school_management.static_school_info"
+                        t-thumbnail="/school_management/static/description/school.png">
+                        <keywords>explore, school</keywords>
+                    </t>
                 </div>
             </div>
         </xpath>

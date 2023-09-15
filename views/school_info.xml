@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
 
@@ -32,6 +32,19 @@
                 </form>
             </field>
         </record>
+
+        <!-- Include QWeb template -->
+        <record id="school_info_template_view" model="ir.ui.view">
+            <field name="name">school.info.template.view</field>
+            <field name="model">school.info</field>
+            <field name="type">qweb</field> <!-- Fix the type attribute here -->
+            <field name="arch" type="xml">
+                <div class="school-info" id="info-school-raw">
+                    <t t-call="school_info_template" />
+                </div>
+            </field>
+        </record>
+
 
         <record id="action_school_info" model="ir.actions.act_window">
             <field name="name">School Information</field>

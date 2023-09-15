@@ -15,11 +15,17 @@
             </div>
         </section>
     </template>
-    <template id="explore_school_options" inherit_id="website.snippet_options">
+    <!-- <template id="explore_school_options" inherit_id="website.snippet_options">
         <xpath expr="//div[@data-js='Box']" position="before">
             <div data-js="ExploreSchoolOptions" data-selector=".school-info"
                 data-drop-in=".o_mega_menu nav">
             </div>
         </xpath>
-    </template>
+    </template> -->
+
+    <record id="school_info_xml_addon" model="ir.asset">
+        <field name="name">Dynamic Info</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">school_management/views/snippets/info_schl_qweb.xml</field>
+    </record>
 </odoo>

@@ -23,7 +23,7 @@
                 decoration-success="admission_date == current_date"
                 decoration-muted="admission_date &gt; current_date"
             >
-                <!-- <field name="image" widget="image" class="oe_avatar" /> -->
+                <field name="image" widget="image" class="oe_avatar" />
                 <field name="student_name" />
                 <field name="stream" />
                 <field name="result" />
