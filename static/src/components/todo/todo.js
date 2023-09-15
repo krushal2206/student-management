@@ -16,7 +16,7 @@ class TodoList extends Component {
       console.log("ADD");
       if (this.state.newTask.trim()) {
         this.state.tasks.push(this.state.newTask);
-        console.log()
+        console.log();
         this.state.newTask = "";
       }
     };

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="school_info" name="Explore School (Dynamic)">
+        <section class="school-info">
+            <div class="container">
+                <div class="text-center py-5">
+                    <h2 class="h1">Explore School (Dynamic Snippets)</h2>
+                    <p>Find the best school in your area! <br />Make your future bright!</p>
+                </div>
+
+                <div class="row justify-content-center" id="info-school-raw">
+
+
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="explore_school_options" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='Box']" position="before">
+            <div data-js="ExploreSchoolOptions" data-selector=".school-info"
+                data-drop-in=".o_mega_menu nav">
+            </div>
+        </xpath>
+    </template>
+</odoo>

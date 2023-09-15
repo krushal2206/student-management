@@ -10,7 +10,8 @@ class SchoolManagement(models.Model):
     _inherit = ['mail.thread']
 
     global_field = fields.Char(string="Global Field")
-    student_name = fields.Char(string="Name", required=True)
+    student_name = fields.Char(
+        string="Name", required=True)
     standard = fields.Integer(string="Standard")
     student_division = fields.Selection([
         ('a', 'A'),
@@ -18,7 +19,7 @@ class SchoolManagement(models.Model):
         ('c', 'C'),
         ('d', 'D'),
     ], string='Division')
-    roll_number = fields.Char(string="Roll Number")
+    roll_number = fields.Char(string="Roll Number", help="Enter the roll No")
 
     # ENR Number Generate
     enr_number = fields.Char(string="Enrollment Number", copy=False, readonly=True,
@@ -44,7 +45,8 @@ class SchoolManagement(models.Model):
     country = fields.Many2one('res.country')
 
     phone_no = fields.Char(string="Phone Number", tracking=True, required=True)
-    dob = fields.Date(string="Date of Birth", required=True)
+    dob = fields.Date(string="Date of Birth", required=True,
+                      )  # default=fields.Date.today
 
     # age
     age = fields.Integer(string='Age', compute='_compute_age', store=True)

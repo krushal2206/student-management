@@ -26,6 +26,7 @@
         name="Stream"
         parent="school_management_root_menu" />
 
+
     <!-- Menu for Science Students -->
     <menuitem
         id="menu_science_students"
@@ -46,5 +47,12 @@
         name="Arts Students"
         parent="stream_management_root_menu"
         action="action_arts_students" />
+
+    <menuitem
+        id="school_info_sub_menu"
+        name="School Information"
+        action="action_school_info"
+        parent="school_management_root_menu" />
+
 
 </odoo>
